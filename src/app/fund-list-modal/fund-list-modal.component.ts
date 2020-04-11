@@ -16,9 +16,12 @@ export class FundListModalComponent implements OnInit {
   fundsList: Fund[];
   filteredOptions: Observable<Fund[]>;
   modalIndex: number;
+  fundListAfterSelect:Fund[]; 
 
   constructor(public dialogRef: MatDialogRef<FundListModalComponent>, private fundService: FundService, @Inject(MAT_DIALOG_DATA) modalData) { 
-    this.modalIndex = modalData;
+    this.modalIndex = modalData.modalid;
+    this.fundListAfterSelect = modalData.fundListAfterSelect;
+
   }
 
   ngOnInit(): void {
@@ -34,6 +37,9 @@ export class FundListModalComponent implements OnInit {
     this.fundService.getFunds()
       .subscribe((data) => {
         this.fundsList = data;
+        if (this.fundListAfterSelect.length > 0) {
+          this.fundsList = this.fundsList.filter(o => !this.fundListAfterSelect.find(o2 => o2.id === o.id));
+        }
         this.filteredOptions = this.myControl.valueChanges
           .pipe(
             startWith(''),
@@ -44,7 +50,6 @@ export class FundListModalComponent implements OnInit {
 
   private _filter(value: any): Fund[] {
       const filterValue = value;
-      
       return this.fundsList.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 

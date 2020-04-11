@@ -7,7 +7,7 @@
     </div>
     <div class="growww__box">
         <div *ngIf="(modalBox1 != 1)" class="growww__fund-add-center">
-            <i (click)="openModal(1)" class="material-icons growww__add-icon">add_circle_outline</i>
+            <i id="addFund1" (click)="openModal(1)" class="material-icons growww__add-icon">add_circle_outline</i>
             <h3 class="growww__add-a-fund">Add a fund</h3>
         </div>
         <div *ngIf="(modalBox1 === 1)">
@@ -25,7 +25,7 @@
     </div>
     <div class="growww__box">
         <div *ngIf="(modalBox2 !=2)" class="growww__fund-add-center">
-            <i (click)="openModal(2)" class="material-icons growww__add-icon">add_circle_outline</i>
+            <i id="addFund2" (click)="openModal(2)" class="material-icons growww__add-icon">add_circle_outline</i>
             <h3 class="growww__add-a-fund">Add a fund</h3>
         </div>
         <div *ngIf="(modalBox2 === 2)">
@@ -43,7 +43,7 @@
     </div>
     <div class="growww__box">
         <div *ngIf="(modalBox3 !=3)" class="growww__fund-add-center">
-            <i (click)="openModal(3)" class="material-icons growww__add-icon">add_circle_outline</i>
+            <i id="addFund3" (click)="openModal(3)" class="material-icons growww__add-icon">add_circle_outline</i>
             <h3 class="growww__add-a-fund">Add a fund</h3>
         </div>
 
@@ -206,17 +206,17 @@
                 <td class="growww__table-heading">
                     Pros
                 </td>
-                <td class="growww__table-content" *ngIf="fundData1">
+                <td class="growww__table-content growww__ul-align" *ngIf="fundData1">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData1.pros">
                     {{fund}}</ul>
                 </td>
                 <td class="growww__table-content" *ngIf="!fundData1">-</td>
-                <td class="growww__table-content" *ngIf="fundData2">
+                <td class="growww__table-content  growww__ul-align" *ngIf="fundData2">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData2.pros">
                     {{fund}}</ul>
                 </td>
                 <td class="growww__table-content" *ngIf="!fundData2">-</td>
-                <td class="growww__table-content growww__no-right-border" *ngIf="fundData3">
+                <td class="growww__table-content growww__no-right-border  growww__ul-align" *ngIf="fundData3">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData3.pros">
                     {{fund}}</ul>
                 </td>
@@ -226,17 +226,17 @@
                 <td class="growww__table-heading">
                     Cons
                 </td>
-                <td class="growww__table-content" *ngIf="fundData1">
+                <td class="growww__table-content  growww__ul-align" *ngIf="fundData1">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData1.cons">
                     {{fund}}</ul>
                 </td>
                 <td class="growww__table-content" *ngIf="!fundData1">-</td>
-                <td class="growww__table-content" *ngIf="fundData2">
+                <td class="growww__table-content  growww__ul-align" *ngIf="fundData2">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData2.cons">
                     {{fund}}</ul>
                 </td>
                 <td class="growww__table-content" *ngIf="!fundData2">-</td>
-                <td class="growww__table-content growww__no-right-border" *ngIf="fundData3">
+                <td class="growww__table-content growww__no-right-border  growww__ul-align" *ngIf="fundData3">
                     <ul class="growww__padding-left-zero" *ngFor="let fund of fundData3.cons">
                     {{fund}}</ul>
                 </td>
@@ -262,17 +262,17 @@
                 <td class="growww__table-heading">
                     Education
                 </td>
-                <td class="growww__table-content">{{fundData1 ? fundData1.fundManager[0].education : '-'}}</td>
-                <td class="growww__table-content">{{fundData2 ? fundData2.fundManager[0].education :'-'}}</td>
-                <td class="growww__table-content growww__no-right-border">{{fundData3 ? fundData3.fundManager[0].education:'-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData1 ? fundData1.fundManager[0].education : '-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData2 ? fundData2.fundManager[0].education :'-'}}</td>
+                <td class="growww__table-content growww__no-right-border" style="padding: 1rem; text-align: left;">{{fundData3 ? fundData3.fundManager[0].education:'-'}}</td>
             </tr>
             <tr class="growww__table-row-even">
                 <td class="growww__table-heading">
                     Experience
                 </td>
-                <td class="growww__table-content">{{fundData1 ? fundData1.fundManager[0].experience : '-'}}</td>
-                <td class="growww__table-content">{{fundData2 ? fundData2.fundManager[0].experience : '-'}}</td>
-                <td class="growww__table-content growww__no-right-border">{{fundData3 ? fundData3.fundManager[0].experience : '-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData1 ? fundData1.fundManager[0].experience : '-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData2 ? fundData2.fundManager[0].experience : '-'}}</td>
+                <td class="growww__table-content growww__no-right-border" style="padding: 1rem; text-align: left;">{{fundData3 ? fundData3.fundManager[0].experience : '-'}}</td>
             </tr>
         </table>
     </div>
@@ -286,9 +286,9 @@
                 <td class="growww__table-heading">
                     Description
                 </td>
-                <td class="growww__table-content">{{fundData1 ? fundData1.aboutFund[0].name:'-'}}</td>
-                <td class="growww__table-content">{{fundData2 ? fundData2.aboutFund[0].name:'-'}}</td>
-                <td class="growww__table-content growww__no-right-border">{{fundData3 ? fundData3.aboutFund[0].name:'-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData1 ? fundData1.aboutFund[0].name:'-'}}</td>
+                <td class="growww__table-content" style="padding: 1rem; text-align: left;">{{fundData2 ? fundData2.aboutFund[0].name:'-'}}</td>
+                <td class="growww__table-content growww__no-right-border" style="padding: 1rem; text-align: left;">{{fundData3 ? fundData3.aboutFund[0].name:'-'}}</td>
             </tr>
             <tr class="growww__table-row-odd">
                 <td class="growww__table-heading">

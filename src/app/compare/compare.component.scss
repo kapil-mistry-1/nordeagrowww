@@ -7,7 +7,7 @@
         margin-right: auto;
         -webkit-box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
         box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
-        height: 165px;
+        height: 175px;
         margin-top: 2.5rem;
         margin-bottom: $marginXLarge;
     }
@@ -20,7 +20,7 @@
         text-align: center;
         border: 1px solid $lightGrayColor;
         border-bottom: none;
-        height: 165px;
+        height: 175px;
         padding: 20px;
         position: relative;
     }
@@ -157,6 +157,12 @@
         line-height: 50px;
         vertical-align: middle;
         padding: 0 10px;
+    }
+
+    &__ul-align {
+        text-align: left; 
+        word-break: break-word; 
+        padding: 1rem 1rem 0 1rem;
     }
 }
 

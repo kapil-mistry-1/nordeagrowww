@@ -12,6 +12,7 @@
                placeholder="Search Mutual funds"
                aria-label="Number"
                matInput
+               id="searchInputModal"
                [formControl]="myControl"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onFundSelection($event.option)" [displayWith]="displayFn">

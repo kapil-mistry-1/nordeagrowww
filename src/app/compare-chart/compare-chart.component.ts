@@ -20,7 +20,7 @@ export class CompareChartComponent implements OnInit {
 
     this.parentSubject.subscribe(event => {
       this.fundDetails = event;
-      //  console.log('called when the notifyChildren method is', event);
+      //  console.log('called when the fund selected at chart parent page', event);
       if (event.length != 0) {
         this.updateChart(event);
         this.showChartContainer = true;
@@ -90,15 +90,15 @@ export class CompareChartComponent implements OnInit {
     };
     $(function () {
       var chart1 = new Highcharts.Chart(chartOptions);
-      let colormap = { 2: '#0000A0', 1: '#9400D3', 0: '#00d09c' };
-
-      //console.log(event[0]['chartData'][0]['1Y'])
+      let colormap = { 0: '#0000A0', 1: '#9400D3', 2: '#00d09c' };
+      //fundChartData pass from chart parent page contains all fund details
       if (chart1) {
         for (let i = 0; i < event.length; i++) {
-          var legendtitle = event[i]['name'] + ' (' + event[i]['oneYear'] + ') '
+          let fundChartData = event[i]['fundChartData'];
+          var legendtitle =fundChartData['name'] + ' (' + fundChartData['oneYear'] + ') '
           chart1.addSeries({
             name: legendtitle,
-            data: event[i]['chartData'][0]['1Y'],
+            data: fundChartData['chartData'][0]['1Y'],
             color: colormap[i]
           });
         }
@@ -111,13 +111,13 @@ export class CompareChartComponent implements OnInit {
     let yearmap = { 1: '1Y', 3: '3Y', 5: '5Y' };
     let titleyearmap = { 1: 'oneYear', 3: 'threeYears', 5: 'fiveYears' };
 
-    //console.log(yearmap[year])
     var chart2 = $("#chartcontainer").highcharts();
     if (chart2) {
       for (let i = 0; i < this.fundDetails.length; i++) {
-        var legendtitle = this.fundDetails[i]['name'] + ' (' + this.fundDetails[i][titleyearmap[year]] + ') '
+        let fundChartData = this.fundDetails[i]['fundChartData']
+        var legendtitle = fundChartData['name'] + ' (' + fundChartData[titleyearmap[year]] + ') '
         chart2.series[i].update({ name: legendtitle });
-        chart2.series[i].setData(this.fundDetails[i]['chartData'][0][yearmap[year]])
+        chart2.series[i].setData(fundChartData['chartData'][0][yearmap[year]])
       }
     }
   }
