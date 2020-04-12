@@ -3,10 +3,10 @@
         <h2 class="card-title">Compare Funds</h2>              
     </div> 
     <div class="card-body">
-        <h4 class="text-muted" *ngIf="fundDetails && fundDetails.name">{{fundDetails.name}}</h4> 
+        <h4 class="text-muted text-center" *ngIf="fundDetails && fundDetails.name">{{fundDetails.name}}</h4> 
         <div style="margin-left:45%">
             <h3 class="card-title" style="color: #0000a0;">VS</h3> 
         </div>       
-        <button type="button" id="compareMutualFunds" (click)="navigateCompare()" class="btn btn-block btn-default">Search Mutual Fund</button>
+        <button type="button" (click)="navigateCompare()" class="btn btn-block btn-default">Search Mutual Fund</button>
     </div>
 </div>

@@ -5,12 +5,12 @@
         </div>
     </div>
     <div class="card-body">
-        <h4 class="text-muted">Enter investment amount</h4>   
+        <h4 class="text-muted text-center">Enter investment amount</h4>   
         <input type="number" [(ngModel)]= "investmentAmount" name="investmentAmount" class="form-control" placeholder="0"><br>
-        <div class="btn-group" style="padding-left:18%;">
-            <button style="margin: 5px; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(5000)" class="btn btn-outline-info btn-xs">+5000</button>
-            <button style="margin: 5px; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(10000)" class="btn btn-outline-info btn-xs">+10000</button>
-            <button style="margin: 5px; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(20000)" class="btn btn-outline-info btn-xs">+20000</button>
+        <div style="text-align: center;">
+            <button style="margin: 1%; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(5000)" class="btn btn-outline-info btn-xs float-center">+5000</button>
+            <button style="margin: 1%; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(10000)" class="btn btn-outline-info btn-xs float-center">+10000</button>
+            <button style="margin: 1%; border-radius: 5rem;" type="button" (click)="addInvestmentAmount(20000)" class="btn btn-outline-info btn-xs float-center">+20000</button>
         </div>
         <br>
         <br>

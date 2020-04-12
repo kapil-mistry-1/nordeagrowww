@@ -45,7 +45,8 @@ genrteChart(data : any){
   $(function() {
     $('#container').highcharts({
       chart: {
-        type: 'line'              
+        type: 'line',
+        zoomType: 'x'
       },
       title: {
         text: ''
@@ -55,7 +56,7 @@ genrteChart(data : any){
         borderRadius: 10,
         borderWidth: 3,
         crosshairs: [true,false],
-        pointFormat: '<b>{series.name} : </b> {point.y:.2f} Rs.<br/>',          
+        pointFormat: '<b>{series.name} : </b> {point.y:.2f} <br/>',          
         xDateFormat: '<b>DATE : </b> %d %b %Y'                 
       },
        plotOptions: {

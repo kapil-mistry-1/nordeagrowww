@@ -15,14 +15,13 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private fundService: FundService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fundId = this.route.snapshot.params['id'];
-    this.fundService.getFundsById(this.fundId).subscribe((data) => {
-      this.fundname = data[0].name;
-      this.fundDetails = data[0];
-    });
+    this.route.params.subscribe(routeParams => {
+      this.fundService.getFundsById(routeParams.id).subscribe((data) => {
+        this.fundDetails = data[0];
+      });
+    });    
   }
-  navigateCompare()
-  {
+  navigateCompare(){
     this.router.navigate(['/compare', this.fundId]);
   }
 }

@@ -40,7 +40,7 @@ export class CompareComponent implements OnInit {
         this.addAndGetFundsList(result);
       });
     }
-
+    window.scrollTo(0, 0);
   }
 
   openModal(i) {

@@ -14,16 +14,40 @@ declare var Highcharts: any;
 })
 export class HoldingAnalysisComponent implements OnInit {
   @Input() fundDetails: Fund;
+  dataForChart;
+  
   constructor() {
     
   }
   
   ngOnInit() {
-    if (this.fundDetails!=undefined) {
+    this.dataForChart = [
+      {
+      name: 'Services',
+      y: this.fundDetails.yvalService
+      }, {
+      name: 'Others',
+      y: this.fundDetails.yvalOthers
+      }, {
+      name: 'Technology',
+      y: this.fundDetails.yvalTechnology
+      }, {
+      name: 'Financial',
+      y: this.fundDetails.yvalFinancial
+      }, {
+      name: 'FMCG',
+      y: this.fundDetails.yvalFMCG
+      }, {
+      name: 'Chemicals',
+      y: this.fundDetails.yvalChemical
+    }]
+    this.createChartForHoldingAnalysis(this.dataForChart, this.fundDetails.allocatedFund);
+  }
+  createChartForHoldingAnalysis (data : any, allocatedFund: string){
     $(function () {
       
       Highcharts.setOptions({
-        colors: ['#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+        colors: ['#2B547E', '#342D7E', '#0041C2', '#6960EC', '#488AC7', '#95B9C7', '#56A5EC', '#00FFFF']
       });
       $('#pieChart').highcharts({
         chart: {
@@ -36,12 +60,17 @@ export class HoldingAnalysisComponent implements OnInit {
         },
         legend: {
           useHTML: true,
-          labelFormat: '<table><tr><td style="text-align: center;border-right: .5px;border-left: .5px; padding-left: 30px;">{name}</td><td style="text-align: center;border-right: .5px ;border-left: .5px ; padding-left: 30px;">{y}</td></tr></table>',
+          labelFormatter: function() {
+                return '<div style=" display: flex;-webkit-box-align: center; '
+                +'position: relative;margin-bottom: 15px; ">'
+                +'<div style="color:#000000,font-size:12px !important; width:150px">'
+                +'<b>'+ this.name + '</b></div><div style="color:#000000,font-size:12px position: absolute;top: 0;right: -95px;!important;">'+this.y+'%</div></div>'; 
+        },	
           align: 'right',
           verticalAlign: 'top',
           layout: 'vertical',
           x: 0,
-          y: 110
+          y: 105
         },
         title: {
           text: 'Equity Sector Allocation',
@@ -49,8 +78,8 @@ export class HoldingAnalysisComponent implements OnInit {
 
         },
         subtitle: {
-          text: 'Rs 15995 Cr',
-          x:-60,
+          text: allocatedFund,
+          x:-67,
           y:180,
           style: {
             fontWeight: 'bold'
@@ -78,29 +107,10 @@ export class HoldingAnalysisComponent implements OnInit {
           type: 'pie',
           //colorByPoint: true,
           innerSize: '50%',
-          data: [{
-            name: 'Services',
-            y: 8.6
-          }, {
-            name: 'Others',
-            y: 14.7
-          }, {
-            name: 'Technology',
-            y: 10.4
-          }, {
-            name: 'Financial',
-            y: 50.2
-          }, {
-            name: 'FMCG',
-            y: 9.2
-          }, {
-            name: 'Chemicals',
-            y: 6.8
-          }]
+          data:  data
         }]
-      });
     });
-  }
-  }
+  });
 }
 
+}
