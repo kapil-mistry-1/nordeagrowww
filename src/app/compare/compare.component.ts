@@ -28,7 +28,17 @@ export class CompareComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    const header = document.getElementById("compareBoxId");
+    const sticky = header.offsetTop;
+      window.onscroll = function() {
+      
+        if (window.pageYOffset > 315) {
+          header.classList.add("growww__sticky");
+        } else {
+          header.classList.remove("growww__sticky");
+        }
+       
+      };
     const fundId = this.route.snapshot.params['id'];
     if (fundId !== '') {
       this.fundService.getFundsById(fundId).subscribe((data) => {
@@ -58,8 +68,10 @@ export class CompareComponent implements OnInit {
 
     const modalDialog = this.matDialog.open(FundListModalComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(result => {
+      
       if (result) {
         if (result.modalBoxId === 1) {
+         
           this.modalBox1 = result.modalBoxId;
           this.fundName1 = result.name;
           this.fundData1 = result;
@@ -80,7 +92,7 @@ export class CompareComponent implements OnInit {
         this.addAndGetFundsList(result);
 
         //console.log(this.fundsList);
-
+        
       }
     });
   }
@@ -95,12 +107,14 @@ export class CompareComponent implements OnInit {
       this.fundsList.push(result);
 
     }
+    window.scrollTo(0, 100);
     this.notifyChildren(this.fundsList)
-
+   
     return this.fundsList;
   }
 
   toggleFunds(modalId) {
+    window.scrollTo(0, 0);
 
     let fileredData = this.fundsList.filter(elem => (elem.modalBoxId != modalId))
     this.fundsList = fileredData;

@@ -28,7 +28,7 @@
     &__add-icon {
         font-size: 2rem;
         color: $primaryColor;
-		cursor: pointer;
+        cursor: pointer;
     }
 
     &__cancel-icon {
@@ -164,6 +164,16 @@
         text-align: left; 
         word-break: break-word; 
         padding: 1rem 1rem 0 1rem;
+    }
+
+    
+    &__sticky {
+        position: fixed;
+        top: 0;
+       // left: 0;
+       width: 80%;
+        z-index:  100; 
+        
     }
 }
 
